@@ -29,11 +29,21 @@ function playRound(computerChoice, humanChoice){
 }
 
 function checkWin(humanScore, computerScore){
+    let text = ""
     if (humanScore == 5 || computerScore == 5){
         if (humanScore == 5)
-            alert("Congratulations, you won!");
+            text = "Congratulations, you won!";
         else
-            alert("Oh no, you lost!");
+            text = "Oh no, you lost!";
+        
+        // Create element if it doesn't already exist so mulitple lines aren't made
+        // if user keeps playing past win condition
+        if (document.querySelector(".winText") == null){
+            const winText = document.createElement("p");
+            winText.classList.add("winText")
+            winText.textContent = text;
+            document.querySelector("body").appendChild(winText);
+        }
     }
 }
 
