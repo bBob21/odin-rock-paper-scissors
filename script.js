@@ -74,7 +74,20 @@ buttons.forEach((button) => {
     button.addEventListener("click", () => {
         let humanChoice = button.className;
         let computerChoice = getComputerChoice();
-        playRound(computerChoice, humanChoice);
+
+        document.querySelector(".humanChoice").textContent = humanChoice;
+        document.querySelector(".computerChoice").textContent = computerChoice;
+
+        let result = playRound(computerChoice, humanChoice);
+        if (result == "win") {
+            humanScore++;
+            document.querySelector(".humanScore").textContent = humanScore;
+        }
+        else if (result == "lose"){
+            computerScore++;
+            document.querySelector(".computerScore").textContent = computerScore;
+        }
+
     });
 });
 
