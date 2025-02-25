@@ -5,10 +5,6 @@ function getComputerChoice(){
 }
 
 function playRound(computerChoice, humanChoice){
-    // Game state
-    console.log(`  You played ${humanChoice}. Computer played ${computerChoice}.`);
-
-    // Game logic
     if (computerChoice == humanChoice){
         return "draw";
     }
@@ -32,40 +28,16 @@ function playRound(computerChoice, humanChoice){
     }
 }
 
+function checkWin(humanScore, computerScore){
+    if (humanScore == 5 || computerScore == 5){
+        if (humanScore == 5)
+            alert("Congratulations, you won!");
+        else
+            alert("Oh no, you lost!");
+    }
+}
 
-// console.log("=== Welcome to Rock Paper Scissors! Five rounds will be played. Start! ===");
-
-// // Loop for multiple rounds
-// let i = 0
-// while (i < 5){
-//         let humanChoice = getHumanChoice();
-//         let computerChoice = getComputerChoice();
-
-//         // Start round
-//         console.log(`--- Round ${i+1} ---`)
-//         let roundState = playRound(computerChoice, humanChoice);
-
-//         // Win or lose, update scores
-//         if (roundState == "win") {
-//             humanScore++;
-//             console.log(`  >> You win! ${humanChoice} beats ${computerChoice}.`);
-//         }
-//         else if (roundState == "lose") {
-//             computerScore++;
-//             console.log(`  >> You lose! ${computerChoice} beats ${humanChoice}.`);
-//         }
-//         else if (roundState == "draw"){
-//             console.log("  >> You drew! No one wins.");
-//         }
-
-//         console.log(`  Score:  Human: ${humanScore} - Computer: ${computerScore}`);
-//         i++;
-//     }
-
-//     console.log(`Final Score! Human: ${humanScore} - Computer: ${computerScore}`);
-// }
-
-
+// Game handler
 let humanScore = 0
 let computerScore = 0
 
@@ -88,6 +60,9 @@ buttons.forEach((button) => {
             document.querySelector(".computerScore").textContent = computerScore;
         }
 
+        checkWin(humanScore, computerScore);
     });
 });
+
+
 
