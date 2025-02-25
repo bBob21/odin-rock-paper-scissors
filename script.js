@@ -1,16 +1,7 @@
-// # computer picks
-// # ask user to picks
-// # compare result
-
 function getComputerChoice(){
     let choices = ["rock", "paper", "scissors"];
     let randomNumber = Math.floor(Math.random() * choices.length);
     return choices[randomNumber];
-}
-
-function getHumanChoice(){
-    let humanChoice = prompt("Choose one of the following:\n - rock\n - paper\n - scissors");
-    return humanChoice.toLowerCase();
 }
 
 function playRound(computerChoice, humanChoice){
@@ -41,39 +32,49 @@ function playRound(computerChoice, humanChoice){
     }
 }
 
-function playGame(){
-    // Score
-    let humanScore = 0
-    let computerScore = 0
 
-    console.log("=== Welcome to Rock Paper Scissors! Five rounds will be played. Start! ===");
+// console.log("=== Welcome to Rock Paper Scissors! Five rounds will be played. Start! ===");
 
-    // Loop for multiple rounds
-    let i = 0
-    while (i < 5){
-        let humanChoice = getHumanChoice();
+// // Loop for multiple rounds
+// let i = 0
+// while (i < 5){
+//         let humanChoice = getHumanChoice();
+//         let computerChoice = getComputerChoice();
+
+//         // Start round
+//         console.log(`--- Round ${i+1} ---`)
+//         let roundState = playRound(computerChoice, humanChoice);
+
+//         // Win or lose, update scores
+//         if (roundState == "win") {
+//             humanScore++;
+//             console.log(`  >> You win! ${humanChoice} beats ${computerChoice}.`);
+//         }
+//         else if (roundState == "lose") {
+//             computerScore++;
+//             console.log(`  >> You lose! ${computerChoice} beats ${humanChoice}.`);
+//         }
+//         else if (roundState == "draw"){
+//             console.log("  >> You drew! No one wins.");
+//         }
+
+//         console.log(`  Score:  Human: ${humanScore} - Computer: ${computerScore}`);
+//         i++;
+//     }
+
+//     console.log(`Final Score! Human: ${humanScore} - Computer: ${computerScore}`);
+// }
+
+
+let humanScore = 0
+let computerScore = 0
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let humanChoice = button.className;
         let computerChoice = getComputerChoice();
+        playRound(computerChoice, humanChoice);
+    });
+});
 
-        // Start round
-        console.log(`--- Round ${i+1} ---`)
-        let roundState = playRound(computerChoice, humanChoice);
-
-        // Win or lose, update scores
-        if (roundState == "win") {
-            humanScore++;
-            console.log(`  >> You win! ${humanChoice} beats ${computerChoice}.`);
-        }
-        else if (roundState == "lose") {
-            computerScore++;
-            console.log(`  >> You lose! ${computerChoice} beats ${humanChoice}.`);
-        }
-        else if (roundState == "draw"){
-            console.log("  >> You drew! No one wins.");
-        }
-
-        console.log(`  Score:  Human: ${humanScore} - Computer: ${computerScore}`);
-        i++;
-    }
-
-    console.log(`Final Score! Human: ${humanScore} - Computer: ${computerScore}`);
-}
